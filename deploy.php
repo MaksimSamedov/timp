@@ -55,32 +55,19 @@ if (!$allowed) {
 flush();
 
 // Actually run the update
-$commands = array(
-    //'echo $PWD',
-    //'whoami',
-    'git add *',
-    'git stash',
-    'git pull',
-    //'git status',
-    'git submodule sync',
-    'git submodule update',
-    'git submodule status',
-    //'test -e /usr/share/update-notifier/notify-reboot-required && echo "system restart required"',
-);
+$command = 'git add --all && git stash && git pull && git submodule sync && git submodule update && git submodule status';
 
 $output = "\n";
 
 $log = "####### ".date('Y-m-d H:i:s'). " #######\n";
 
-foreach($commands AS $command){
-    // Run it
-    $tmp = shell_exec("$command 2>&1");
-    // Output
-    $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
-    $output .= htmlentities(trim($tmp)) . "\n";
+// Run it
+$tmp = shell_exec("$command 2>&1");
+// Output
+$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
+$output .= htmlentities(trim($tmp)) . "\n";
 
-    $log  .= "\$ $command\n".trim($tmp)."\n";
-}
+$log  .= "\$ $command\n".trim($tmp)."\n";
 
 $log .= "\n";
 
