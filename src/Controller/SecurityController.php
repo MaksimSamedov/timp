@@ -17,7 +17,7 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $session = SessionUtils::startSession();
+//        $session = SessionUtils::startSession();
          if ($this->getUser()) {
              return $this->redirectToRoute('admin');
          }
@@ -26,11 +26,11 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-        if($error === null){
-            $session->set('isAuthenticated', 'authenticated');
-        }elseif($session->get('isAuthenticated')) {
-            $session->remove('isAuthenticated');
-        }
+//        if($error === null){
+//            $session->set('isAuthenticated', 'authenticated');
+//        }elseif($session->get('isAuthenticated')) {
+//            $session->remove('isAuthenticated');
+//        }
         var_dump($_POST ?? 'no POST');
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
@@ -41,9 +41,9 @@ class SecurityController extends AbstractController
      */
     public function logout(): void
     {
-        if(isset($_SESSION['isAuthenticated'])) {
-            unset($_SESSION['isAuthenticated']);
-        }
+//        if(isset($_SESSION['isAuthenticated'])) {
+//            unset($_SESSION['isAuthenticated']);
+//        }
         $this->redirect('/login');
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
