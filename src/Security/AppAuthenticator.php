@@ -30,7 +30,6 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): Passport
     {
-        dd($request->getSession()->all());
         $username = $request->request->get('username', '');
 
         $request->getSession()->set(Security::LAST_USERNAME, $username);
@@ -46,8 +45,6 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        var_dump('test');
-        dd($request->getSession()->all());
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
