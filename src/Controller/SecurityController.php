@@ -31,7 +31,6 @@ class SecurityController extends AbstractController
 //        }elseif($session->get('isAuthenticated')) {
 //            $session->remove('isAuthenticated');
 //        }
-        var_dump($_POST ?? 'no POST');
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
