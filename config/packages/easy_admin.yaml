@@ -1,0 +1,19 @@
+easy_admin:
+  design:
+    assets:
+      js:
+        - '/bundles/cksourceckfinder/ckfinder/ckfinder.js'
+        - '/js/setup-ckfinder.js'
+    form_theme:
+      - '@EasyAdmin/form/bootstrap_4.html.twig'
+      - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+#        templates:
+#            field_select: '@App/bundles/EasyAdmin/crud/field/select.html.twig'
+#    entities:
+#        Post:
+#            class: App\Entity\Post
+#            label: Новость
+#            edit:
+#                fields:
+#                - title
+#                - { property: 'content', type: 'fos_ckeditor' }
