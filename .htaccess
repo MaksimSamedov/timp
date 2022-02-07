@@ -58,12 +58,12 @@ DirectoryIndex public/index.php
     #RewriteRule ^(.*)$ /public/$1 [L]
 
     # Sets the HTTP_AUTHORIZATION header removed by Apache
-    #RewriteCond %{HTTP:Authorization} .+
-    #RewriteRule ^ - [E=HTTP_AUTHORIZATION:%0]
+    RewriteCond %{HTTP:Authorization} .+
+    RewriteRule ^ - [E=HTTP_AUTHORIZATION:%0]
 
     # Removes the /index.php/ part from a URL, if present
-    RewriteCond %{ENV:REDIRECT_STATUS} =""
-    RewriteRule ^index\.php(?:/(.*)|$) %{ENV:BASE}/$1 [R=301,L]
+    #RewriteCond %{ENV:REDIRECT_STATUS} =""
+    #RewriteRule ^index\.php(?:/(.*)|$) %{ENV:BASE}/$1 [R=301,L]
 
     RewriteCond %{REQUEST_URI} /.*\.(js|css|png|jpg|jpeg|gif|ico|ttf|woff|woff2|json)$ [NC]
     RewriteCond %{REQUEST_FILENAME} !-d
